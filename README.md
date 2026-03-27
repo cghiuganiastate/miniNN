@@ -1,5 +1,12 @@
 # miniNN
 Simple Julia Neural Network library with ONE dependency 
+# Requirements
+
+Needs only the Zygote package
+
+# Installation
+
+```using Pkg; Pkg.add(url="https://github.com/cghiuganiastate/miniNN")```
 
 # Example Script
 ```
