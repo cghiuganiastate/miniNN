@@ -1,0 +1,7 @@
+name = "miniNN"
+uuid = "dc25f69a-ad2a-45a4-bb6a-807af447e246"
+authors = ["Christian Ghiugan <cghiugan@iastate.edu>"]
+version = "0.1.0"
+
+[deps]
+Zygote = "e88e6eb3-aa80-5325-afca-941959d7151f"
