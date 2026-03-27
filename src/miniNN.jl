@@ -161,7 +161,7 @@ end
 
 mutable struct SGD
     η::Float32
-    SGD(η=0.01) = SGD(Float32(η))
+    SGD(η=0.01) = new(Float32(η))
 end
 
 
