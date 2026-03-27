@@ -6,7 +6,9 @@ Needs only the Zygote package
 
 # Installation
 
-```using Pkg; Pkg.add(url="https://github.com/cghiuganiastate/miniNN")```
+```
+using Pkg; Pkg.add(url="https://github.com/cghiuganiastate/miniNN")
+```
 
 # Example Script
 ```
