@@ -12,8 +12,7 @@ using Pkg; Pkg.add(url="https://github.com/cghiuganiastate/miniNN")
 
 # Example Script
 ```
-include("miniNN.jl")
-using .miniNN
+using miniNN
 
 n_samples = 100
 x = Float32.(range(0, 2π, length=n_samples))
