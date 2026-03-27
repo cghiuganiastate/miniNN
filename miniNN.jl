@@ -218,8 +218,8 @@ function rowstd(X::AbstractMatrix)
 end
 
 # --- Convenience Constructor ---
-function build_model(X, Y; hidden, η=0.001, verbose=true,
-                     scaling=:inputs, lr_epochs=nothing, lr_values=nothing,
+function build_model(X, Y; hidden, verbose=true,
+                     scaling=:inputs, lr_epochs=[100], lr_values=[0.001],
                      optimizer=:adam, activations=nothing,
                      batchsize=128, shuffle=true)
 
@@ -257,20 +257,20 @@ function build_model(X, Y; hidden, η=0.001, verbose=true,
 
     model = Chain(layers)
 
-    total_epochs = lr_epochs === nothing ? 1 : lr_epochs[end]
+    total_epochs = lr_epochs[end]
 
-    opt = optimizer == :adam ? Adam(η) :
-          optimizer == :sgd  ? SGD(η)  :
+    # Initialize optimizer with first learning rate value
+    opt = optimizer == :adam ? Adam(lr_values[1]) :
+          optimizer == :sgd  ? SGD(lr_values[1])  :
           error("Unknown optimizer: $optimizer")
 
     for epoch in 1:total_epochs
-        η_epoch = η
-        if lr_epochs !== nothing && lr_values !== nothing
-            for (cut, lr) in zip(lr_epochs, lr_values)
-                if epoch <= cut
-                    η_epoch = lr
-                    break
-                end
+        # Get learning rate for current epoch based on schedule
+        η_epoch = lr_values[1]
+        for (cut, lr) in zip(lr_epochs, lr_values)
+            if epoch <= cut
+                η_epoch = lr
+                break
             end
         end
         if optimizer == :adam
