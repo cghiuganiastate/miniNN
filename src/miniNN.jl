@@ -161,9 +161,10 @@ end
 
 mutable struct SGD
     η::Float32
+    SGD(η=0.01) = SGD(Float32(η))
 end
 
-SGD(η=0.01) = SGD(Float32(η))
+
 
 function update!(opt::SGD, ps, grads)
     for p in ps
