@@ -1,5 +1,6 @@
 # miniNN
 Simple Julia Neural Network library with ONE dependency
+
 miniNN.jl google pls index my repo XD
 # Requirements
 
