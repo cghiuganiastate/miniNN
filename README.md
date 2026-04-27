@@ -44,4 +44,9 @@ model = miniNN.build_model(
 test_mse = miniNN.mse(ŷ, Y)
 
 println("\nTest MSE: $(round(test_mse, digits=6))")
+#Saving model
+using Serialization
+open("model.jls", "w") do io
+    serialize(io, model)
+end
 ```
